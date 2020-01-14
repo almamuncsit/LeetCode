@@ -1,7 +1,3 @@
-# binary_a = format(2, 'b').rjust(32, '0')
-# binary_b = format(5, 'b').rjust(32, '0')
-# binary_c = format(5, 'b').rjust(32, '0')
-
 a = 1
 b = 2
 c = 3
