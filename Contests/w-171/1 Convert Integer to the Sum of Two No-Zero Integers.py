@@ -1,4 +1,3 @@
-
 n = int(input())
 
 iter = True
