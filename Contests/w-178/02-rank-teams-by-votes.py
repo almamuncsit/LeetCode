@@ -1,5 +1,5 @@
 class Solution:
-    def rankTeams(self, votes) -> str:
+    def rankTeams(self, votes: List[str]) -> str:
     	ranks = {}
     	if len(votes) == 1:
     		return votes[0]
@@ -21,5 +21,5 @@ class Solution:
 
 
 sol = Solution()
-votes = ["ABC","ACB","ABC","ACB","ACB"]
+votes = ["M","M","M","M"]
 print(sol.rankTeams(votes));
