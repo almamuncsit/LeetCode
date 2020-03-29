@@ -1,4 +1,6 @@
 # Rotate Array
+from typing import List
+
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -9,9 +11,7 @@ class Solution:
         length = len(nums)
 
         for i in range(length, 0, -1):
-            nums[i-1] = nums[i-(k+1)]
-        
+            nums[i - 1] = nums[i - (k + 1)]
+
         for _ in range(0, k):
             nums.pop()
-            
-        
