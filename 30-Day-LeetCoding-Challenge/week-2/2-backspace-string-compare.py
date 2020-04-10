@@ -3,17 +3,15 @@ class Solution:
         final_s = []
         final_t = []
         for c in S:
-            if c == '#':
-                if final_s:
-                    final_s.pop()
-            else:
+            if c != '#':
                 final_s.append(c)
+            elif final_s:
+                final_s.pop()
         for c in T:
-            if c == '#':
-                if final_t:
-                    final_t.pop()
-            else:
+            if c != '#':
                 final_t.append(c)
+            elif final_t:
+                final_t.pop()
         return final_s == final_t
 
 
