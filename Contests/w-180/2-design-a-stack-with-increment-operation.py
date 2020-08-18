@@ -1,26 +1,24 @@
-class CustomStack():
-	"""docstring for CustomStack"""
-	def __init__(self, maxSize):
-		self.maxSize = maxSize
-		self.stack = []
-	
+class CustomStack:
+    """docstring for CustomStack"""
 
-	def push(self, x: int) -> None:
-		if self.maxSize > len(self.stack):
-			self.stack.append(x)
+    def __init__(self, maxSize):
+        self.maxSize = maxSize
+        self.stack = []
 
+    def push(self, x: int) -> None:
+        if self.maxSize > len(self.stack):
+            self.stack.append(x)
 
-	def pop(self) -> int:
-		if len(self.stack) == 0:
-			return -1
+    def pop(self) -> int:
+        if len(self.stack) == 0:
+            return -1
 
-		return self.stack.pop()
+        return self.stack.pop()
 
-
-	def increment(self, k: int, val: int) -> None:
-		n = min(k, len(self.stack))
-		for x in range(n):
-			self.stack[x] += val
+    def increment(self, k: int, val: int) -> None:
+        n = min(k, len(self.stack))
+        for x in range(n):
+            self.stack[x] += val
 
 
 customStack = CustomStack(3)

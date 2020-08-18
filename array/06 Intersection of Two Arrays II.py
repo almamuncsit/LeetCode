@@ -12,10 +12,10 @@ def intersect(nums1, nums2):
             i += 1
         else:
             j += 1
-    
+
     return intersect
 
-        
-nums1 = [4,9,5]
-nums2 = [9,4,9,8,4]
+
+nums1 = [4, 9, 5]
+nums2 = [9, 4, 9, 8, 4]
 print(intersect(nums1, nums2))
