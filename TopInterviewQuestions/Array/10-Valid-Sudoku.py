@@ -3,56 +3,48 @@ from typing import List
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
+        # Check row
+        if not self.checkRow(board):
+            return False
+        
+        # Check Column
+        if not self.checkColumn(board):
+            return False
+
+        # Check sub-boxes
+        if not self.checkSubBox(board):
+            return False
+
+        return True
+
+
+    def checkRow(self, board):
         for i in range(9):
+            row = [i for i in board[i] if i != '.']
+            if len(row) != len(set(row)):
+                return False    
+        return True
+
+
+    def checkColumn(self, board):
+        for i in range(9):
+            col = []
             for j in range(9):
-                # Check row
-                if not self.checkRow(board, i, j):
-                    return False
-                
-                # Check Column
-                if not self.checkColumn(board, i, j):
-                    return False
-
-                # Check sub-boxes
-                if not self.checkSubBox(board, i, j):
-                    return False
-
-        return True
-
-
-    def checkRow(self, board, i, j):
-        for x in range(9):
-            if x != j and board[i][x] != '.' and board[i][x] == board[i][j]:
+                if board[j][i] != '.':
+                    col.append(board[j][i])
+            if len(col) != len(set(col)):
                 return False
         return True
 
 
-    def checkColumn(self, board, i, j):
-        for x in range(9):
-            if x != j and board[x][i] != '.' and board[x][i] == board[j][i]:
-                return False
-        return True
-
-
-    def checkSubBox(self, board, i, j):
-        new_i = self.starPointer(i)
-        new_j = self.starPointer(j)
-        for x in range(new_i, new_i+3):
-            for y in range(new_j, new_j+3):
-                if x == i and y == j:
-                    continue
-                if board[x][y] != '.' and board[x][y] == board[i][j]:
+    def checkSubBox(self, board):
+        for i in [0, 3, 6]:
+            for j in [0, 3, 6]:
+                box = board[i][j:j+3] + board[i+1][j:j+3] + board[i+2][j:j+3]
+                box = [i for i in box if i != '.']
+                if len(box) != len(set(box)):
                     return False
         return True
-
-
-    def starPointer(self, index):
-        if index in [0, 1, 2]:
-            return 0
-        elif index in [3, 4, 5]:
-            return 3
-        else:
-            return 6
 
 
 
