@@ -7,23 +7,24 @@ class TreeNode:
 
 
 class Solution:
+    def __init__(self):
+        self.max_depth = 0
+
+
+    def findDepth(self, depth: int, node: TreeNode) -> int:
+        self.max_depth = max(depth, self.max_depth)
+
+        if node.left:
+            self.findDepth(depth+1, node.left)
+
+        if node.right:
+            self.findDepth(depth+1, node.right)
+
 
     def maxDepth(self, root: TreeNode) -> int:
-
-        def helper(node, lower = float('-inf'), upper = float('inf')):
-            if not node:
-                return True
-            
-            if node.val <= lower or node.val >= upper:
-                return False
-            
-            if not helper(node.right, node.val, upper):
-                return False
-
-            if not helper(node.left, lower, node.val):
-                return False
-            
-            return True
-            
-        return helper(root)
+        if not root:
+            return 0
         
+        self.findDepth(1, root)
+
+        return self.max_depth
