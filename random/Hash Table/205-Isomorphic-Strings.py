@@ -5,23 +5,21 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
-        
+
         s_count = {}
         t_count = {}
 
-        for value in Counter(s).values():
-            s_count[value] = s_count.get(value, 0) + 1
-        
-        for value in Counter(t).values():
-            t_count[value] = t_count.get(value, 0) + 1
+        for i in range(len(s)):
+            if (s[i] in s_count and s_count[s[i]] != t[i]) or (t[i] in t_count and t_count[t[i]] != s[i]):
+                return False
 
-        if s_count == t_count:
-            return True
+            s_count[s[i]] = t[i]
+            t_count[t[i]] = s[i]
 
-        return False
+        return True
 
 
 sol = Solution()
-s = "eggg"
+s = "egg"
 t = "add"
 print(sol.isIsomorphic(s, t))
